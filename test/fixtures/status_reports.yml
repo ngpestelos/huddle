@@ -3,8 +3,8 @@
 one:
   project_id: 
   user_id: 
-  yesterday: MyText
-  today: MyText
+  yesterday: "I did stuff"
+  today: "I'll do stuff"
   status_date: 2014-04-13
 
 two:

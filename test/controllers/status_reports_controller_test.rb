@@ -18,9 +18,18 @@ class StatusReportsControllerTest < ActionController::TestCase
 
   test "should create status_report" do
     assert_difference('StatusReport.count') do
-      post :create, status_report: { project_id: @status_report.project_id, status_date: @status_report.status_date, today: @status_report.today, user_id: @status_report.user_id, yesterday: @status_report.yesterday }
+      post :create, status_report: {
+        project_id: projects(:one).to_param,
+        user_id: users(:one).to_param,
+        status_date: @status_report.status_date,
+        today: @status_report.today,
+        yesterday: @status_report.yesterday
+      }
     end
-
+    actual = assigns(:status_report)
+    assert_equal(projects(:one).id, actual.project.id)
+    assert_equal(users(:one).id, actual.user.id)
+    assert_equal(@status_report.status_date.to_s(:db), actual.status_date.to_s(:db))
     assert_redirected_to status_report_path(assigns(:status_report))
   end
 
