@@ -3,6 +3,7 @@ require 'test_helper'
 class StatusReportsControllerTest < ActionController::TestCase
   setup do
     @status_report = status_reports(:one)
+    login_as_one
   end
 
   test "should get index" do
