@@ -4,8 +4,10 @@ class StatusReport < ActiveRecord::Base
 
   before_save :set_status_date
 
+  validates_presence_of :yesterday, :today
+
   private
-  
+
   def set_status_date
     self.status_date = Date.today if status_date.nil?
   end
