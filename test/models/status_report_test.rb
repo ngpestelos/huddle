@@ -20,4 +20,14 @@ class StatusReportTest < ActiveSupport::TestCase
     actual = StatusReport.new(today: "", yesterday: "")
     assert !actual.valid?
   end
+
+  test "a report with yesterday blank is valid" do
+    actual = StatusReport.new(today: "t", yesterday: "")
+    assert actual.valid?
+  end
+
+  test "a report with today blank is valid" do
+    actual = StatusReport.new(today: "", yesterday: "y")
+    assert actual.valid?
+  end
 end
