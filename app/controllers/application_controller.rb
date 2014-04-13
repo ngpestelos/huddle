@@ -4,4 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
+
+  helper_method :current_project
+
+  private
+
+  def current_project
+    Project.find(session[:project_id]) rescue Project.last
+  end
 end

@@ -24,6 +24,7 @@ class StatusReportsController < ApplicationController
   # POST /status_reports
   # POST /status_reports.json
   def create
+    params[:status_report].merge!(user_id: current_user.id, project_id: current_project.id)
     @status_report = StatusReport.new(status_report_params)
 
     respond_to do |format|
