@@ -5,7 +5,7 @@ one:
   user_id: 
   yesterday: "I did stuff"
   today: "I'll do stuff"
-  status_date: 2014-04-13
+  status_date: Date.today
 
 two:
   project_id: 

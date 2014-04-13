@@ -29,7 +29,7 @@ class StatusReportsControllerTest < ActionController::TestCase
     actual = assigns(:status_report)
     assert_equal(projects(:one).id, actual.project.id)
     assert_equal(users(:one).id, actual.user.id)
-    assert_equal(@status_report.status_date.to_s(:db), actual.status_date.to_s(:db))
+    assert_equal(Date.today.to_s(:db), actual.status_date.to_s(:db))
     assert_redirected_to status_report_path(assigns(:status_report))
   end
 
