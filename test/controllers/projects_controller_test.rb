@@ -47,4 +47,14 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_redirected_to projects_path
   end
+
+  test "project timeline index should be sorted correctly" do
+    set_current_project(:huddle)
+    get :show, id: projects(:huddle).id
+    expected_keys = assigns(:reports).keys.sort.map { |d| d.to_s(:db) }
+    assert_equal(["2014-04-15", "2014-04-16"], expected_keys)
+    assert_equal(
+      [status_reports(:one_tue).id, status_reports(:two_tue).id],
+      assigns(:reports)[Date.parse("2014-04-15")].map(&:id))
+  end
 end

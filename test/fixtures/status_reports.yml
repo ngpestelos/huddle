@@ -13,3 +13,31 @@ two:
   yesterday: MyText
   today: MyText
   status_date: 2014-04-13
+
+one_tue:
+  project: huddle
+  user: one
+  yesterday: Worked on Huddle UI
+  today: Doing some testing
+  status_date: 2014-04-15
+
+one_wed:
+  project: huddle
+  user: one
+  yesterday: Did Some Testing
+  today: More Testing
+  status_date: 2014-04-16
+
+two_tue:
+  project: huddle
+  user: two
+  yesterday: setup huddle schema
+  today: pair programming with one
+  status_date: 2014-04-15
+
+two_wed:
+  project: huddle
+  user: two
+  yesterday: sick
+  today: trying to pair again
+  status_date: 2014-04-16
