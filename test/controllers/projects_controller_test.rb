@@ -57,4 +57,20 @@ class ProjectsControllerTest < ActionController::TestCase
       [status_reports(:one_tue).id, status_reports(:two_tue).id],
       assigns(:reports)[Date.parse("2014-04-15")].map(&:id))
   end
+
+  test "index should display project timeline" do
+    set_current_project(:huddle)
+    get :show, id: projects(:huddle).id
+    assert_select "div[id *= day]", count: 2
+    assert_select "div#2014-04-15_day" do
+      assert_select "div[id *= report]", count: 2
+      assert_select "div#?", dom_id(status_reports(:one_tue))
+      assert_select "div#?", dom_id(status_reports(:two_tue))
+    end
+    assert_select "div#2014-04-16_day" do
+      assert_select "div[id *= report]", count: 2
+      assert_select "div#?", dom_id(status_reports(:one_wed))
+      assert_select "div#?", dom_id(status_reports(:two_wed))
+    end
+  end
 end
